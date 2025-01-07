@@ -4,6 +4,7 @@ import qrcode
 def throw(message):
     raise ValueError(message)
 
+
 def get_default_data_elements():
     return {
         "ServiceTag": "BCD",
