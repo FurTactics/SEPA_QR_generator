@@ -3,7 +3,7 @@ import unittest
 import main
 
 
-class MyTestCase(unittest.TestCase):
+class TestMain(unittest.TestCase):
     def test_get_default_data_elements(self):
         self.assertEqual(main.get_default_data_elements(),
                          {
