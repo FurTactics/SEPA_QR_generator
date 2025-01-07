@@ -1,5 +1,6 @@
 import qrcode
 
+
 def throw(message):
     raise ValueError(message)
 
@@ -11,7 +12,9 @@ def get_default_data_elements():
         "IdentificationCode": "SCT",
     }
 
-def full_data_elements(bic, beneficiary_name, beneficiary_iban, amount_in_eur = "", purpose = "", remittance_information = ""):
+
+def full_data_elements(bic, beneficiary_name, beneficiary_iban, amount_in_eur="", purpose="",
+                       remittance_information=""):
 
     beneficiary_iban = beneficiary_iban.replace(" ", "")
 
@@ -26,9 +29,10 @@ def full_data_elements(bic, beneficiary_name, beneficiary_iban, amount_in_eur = 
     data_elements["RemittanceInformationUnstructured"] = remittance_information[:140] if not remittance_information.startswith("RF") else ""
     return data_elements
 
-def construct_message(data_elements):
 
+def construct_message(data_elements):
     return "\n".join(data_elements.values()).strip()
+
 
 def generate_qr(message):
     qr = qrcode.QRCode(
@@ -41,6 +45,7 @@ def generate_qr(message):
     qr.make(fit=True)
     img = qr.make_image(fill_color="black", back_color="white")
     return img
+
 
 if __name__ == "__main__":
 
